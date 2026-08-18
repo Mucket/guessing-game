@@ -28,49 +28,49 @@ Legend:
 
 ## 3. Initialize git — locally, then GitHub
 
-- [ ] **(Claude)** `git init -b main`
-- [ ] **(Claude)** Write `.gitignore` (`/target`, `**/*.rs.bk`, `.DS_Store`, `.claude/settings.local.json`)
-- [ ] **(Claude)** Create `LICENSE` (MIT)
-- [ ] **(Claude)** First commit: `Initial scaffold`
-- [ ] **(You)** `gh repo create guessing-game --private --source=. --push`
+- [x] **(Claude)** `git init -b main`
+- [x] **(Claude)** Write `.gitignore` (`/target`, `**/*.rs.bk`, `.DS_Store`, `.claude/settings.local.json`)
+- [x] **(Claude)** Create `LICENSE` (MIT, © 2026 Colin McRae)
+- [x] **(Claude)** First commit: `Initial scaffold` (commit `c7bb3d7`)
+- [x] **(You)** `gh repo create guessing-game --private --source=. --push` — pushed to `Mucket/guessing-game`
 
 ## 4. Enforce "no direct push to main" — two layers
 
 - [ ] **(You)** Apply GitHub branch protection via `gh api` (enforce_admins=true)
-- [ ] **(Claude)** Write `.githooks/pre-push` that blocks `refs/heads/main`
-- [ ] **(Claude)** `git config core.hooksPath .githooks` + `chmod +x`
+- [x] **(Claude)** Write `.githooks/pre-push` that blocks `refs/heads/main`
+- [x] **(Claude)** `git config core.hooksPath .githooks` + `chmod +x`
 
 ## 5. Local pre-commit gate
 
-- [ ] **(Claude)** Write `.githooks/pre-commit` (fmt --check, clippy -D warnings, test --quiet)
-- [ ] **(Claude)** `chmod +x .githooks/pre-commit`
+- [x] **(Claude)** Write `.githooks/pre-commit` (fmt --check, clippy -D warnings, test --quiet)
+- [x] **(Claude)** `chmod +x .githooks/pre-commit`
 
 ## 5b. GitHub Actions CI
 
-- [ ] **(Claude)** Write `.github/workflows/ci.yml` (fmt, clippy, test on PR + push to main)
+- [x] **(Claude)** Write `.github/workflows/ci.yml` (fmt, clippy, test on PR + push to main)
 - [ ] **(You)** After CI runs green on the first PR, re-apply branch protection to require the `check` status check
 
 ## 6. Claude Code configuration
 
-- [ ] **(Claude)** Write `.claude/settings.json` (permissions + PostToolUse `cargo fmt` on `*.rs`)
-- [ ] **(Claude)** Write `.claude/commands/checks.md` (the `/checks` slash command)
+- [~] **(Claude)** Write `.claude/settings.json` — draft written, awaiting hook-schema verification from `claude-code-guide` agent
+- [ ] **(Claude)** Write `.claude/commands/checks.md` (the `/checks` slash command) — pending agent verification of format
 
 ## 6b. README.md
 
-- [ ] **(Both)** Draft `README.md` (~15–25 lines; what/quick-start/how-to-play/dev pointer/license)
+- [x] **(Both)** Draft `README.md`
 
 ## 6c. CHANGELOG.md
 
-- [ ] **(Claude)** Initialize `CHANGELOG.md` (Keep-a-Changelog format, `[Unreleased]` section)
+- [x] **(Claude)** Initialize `CHANGELOG.md`
 
 ## 6d. NOTES.md — learning log
 
+- [x] **(Claude)** Scaffold the empty structure
 - [ ] **(You)** Own the content; Claude only edits when explicitly asked
-- [ ] **(Claude)** Scaffold the empty structure
 
 ## 7. CLAUDE.md
 
-- [ ] **(Both)** Draft v1 CLAUDE.md (~30 lines; purpose, build/test/run, layout, workflow, style)
+- [x] **(Both)** Draft v1 CLAUDE.md
 
 ## 8. The game
 

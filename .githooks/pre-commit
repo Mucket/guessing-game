@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Local quality gate: keep every commit fmt-clean, lint-clean, and green.
+# Fast on a tiny crate; move slow parts to pre-push if this ever drags.
+set -euo pipefail
+
+# Make sure cargo is on PATH even if git was launched from a minimal shell
+# (e.g. some GUI clients).
+if ! command -v cargo >/dev/null 2>&1; then
+  [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+fi
+
+cargo fmt --check
+cargo clippy --all-targets -- -D warnings
+cargo test --quiet

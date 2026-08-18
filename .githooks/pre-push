@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Block direct pushes to the protected branch. Belt-and-suspenders with
+# GitHub branch protection: catches accidents locally before the network
+# round trip, and keeps the "PRs only" rule visible in the repo itself.
+protected='main'
+while read -r local_ref local_sha remote_ref remote_sha; do
+  if [[ "$remote_ref" == "refs/heads/$protected" ]]; then
+    echo "Blocked: direct push to $protected. Open a PR instead." >&2
+    exit 1
+  fi
+done
+exit 0
